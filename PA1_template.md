@@ -29,7 +29,7 @@ hist(stepsByDay$Total.Steps, breaks = 20,
       xlab = "Total Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![](PA1_template_files/figure-html/totalStepView-1.png) 
 
 ```r
 ## Calculate & report on the mean and median steps by day
@@ -70,7 +70,7 @@ g <- g + ylab("Average Steps") # Relabel the y-axis
 g
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![](PA1_template_files/figure-html/avgDailyActivity-1.png) 
 
 ```r
 ## Calculate and report the interval where step count tends to be the highest
@@ -119,7 +119,7 @@ hist(stepsByDayImp$Total.Steps, breaks = 20,
       xlab = "Total Steps") # Generate histogram
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![](PA1_template_files/figure-html/imputedDataset-1.png) 
 
 ```r
 ##Calculate and report on the mean & median total number of steps each day
@@ -165,6 +165,6 @@ g <- g + ylab("Average Steps")
 g
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/weekdayWeekendDiff-1.png) 
 
 At first glance, it appears that weekdays have more activity than weekends due to a higher morning peak. However, after closer inspection, weekend activity tends to be sustained more throughout the day vs. weekdays, which are characterized by an early morning spike and then a significant drop-off in activity throughout the day.

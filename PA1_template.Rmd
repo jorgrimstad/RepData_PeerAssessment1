@@ -10,7 +10,7 @@ output:
 
 ## Loading and preprocessing the data
 Assuming we're starting straight with the cloned data, we have to first unzip the package to the working directory and read in the csv.
-```{r, echo=TRUE}
+```{r loading, echo=TRUE}
 unzip("activity.zip") #unpack activity.zip file
 activity <- read.csv("activity.csv") #read in activity.csv
 ```
@@ -20,7 +20,7 @@ Because the csv is already pretty well labeled/organized, there's no need to do 
 ## What is mean total number of steps taken per day?
 To visualize the total number of steps taken per day, I aggregate the data by date and use a simple histogram to show typical activity levels. Then, I calculate median and mean values on the aggregated data.frame, and print them to the console.
 
-```{r, echo=TRUE}
+```{r totalStepView, echo=TRUE}
 ## Aggregate the data to prepare for the analysis
 stepsByDay <- aggregate(activity$steps,
       by=list(activity$date), 
@@ -44,7 +44,7 @@ paste("Average steps per day is", round(avgStepsByDay),
 
 ## What is the average daily activity pattern?
 To visualize the average daily activity pattern, I first aggregate the data by interval and apply the mean function to it, removing NAs. Then, I produce a time series plot in `ggplot2`. Finally, I isolate the row containing the maximum value for average steps and print the interval value to the console in a neat format.
-```{r, echo=TRUE}
+```{r avgDailyActivity, echo=TRUE}
 library(ggplot2)
 
 ## Aggregate the data to set up for the analysis
@@ -77,7 +77,7 @@ paste("The maximum average daily steps occurs at interval ",
 ## Imputing missing values
 To handle missing values, first I report on the number of missing values in the dataset. Then, I decide that my strategy for filling in these NAs is to replace them with the average total steps for that interval from the non-NA values. Using the `stepsByInterval` data.frame from the previous step, I find the NA values and replace them with the averages, creating a data.frame called `activityImp` that is identical to `activity` except with NA values replaced by averages.
 
-```{r, echo=TRUE}
+```{r imputedDataset, echo=TRUE}
 ##Calculate & report on total # of missings
 paste("There are a total of", sum(is.na(activity$steps)), 
       "missing step values in the dataset")
@@ -111,7 +111,7 @@ In general, imputing values for missing data reduces the skew in the data, but d
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r, echo=TRUE}
+```{r weekdayWeekendDiff, echo=TRUE}
 library(plyr) # load plyr to get mapvalues function
 activityImp$dayOfWeek <- weekdays(as.POSIXct(activityImp$date)) # create column with day names
 activityImp$dayOfWeek <- as.factor(mapvalues(activityImp$dayOfWeek, 
